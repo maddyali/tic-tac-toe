@@ -132,8 +132,8 @@ const gameController = (() => {
   };
 
   const reset = () => {
-    let round = 1;
-    let isOver = false;
+    round = 1;
+    isOver = false;
   };
 
   return { playRound, gameOver, reset };
