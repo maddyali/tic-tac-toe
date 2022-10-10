@@ -32,6 +32,7 @@ const gameBoard = (() => {
 const displayController = (() => {
   const fieldElements = document.querySelectorAll(".field");
   const restartBtn = document.querySelector("#restartBtn");
+  const messageEl = document.querySelector("#message");
 
   fieldElements.forEach((field) => {
     field.addEventListener("click", (e) => {
@@ -45,6 +46,7 @@ const displayController = (() => {
     gameBoard.reset();
     gameController.reset();
     updateGameboard();
+    setMessage("Player X's turn");
   });
 
   // Render contents of the gameboard array to the webpage.
@@ -53,6 +55,20 @@ const displayController = (() => {
       fieldElements[i].textContent = gameBoard.getIndex(i);
     }
   };
+
+  const setMessage = (message) => {
+    messageEl.textContent = message;
+  };
+
+  const setResult = (winner) => {
+    if (winner === "Tie") {
+      setMessage(`It's a tie!`);
+    } else {
+      setMessage(`Player ${winner} wins!`);
+    }
+  };
+
+  return { setMessage, setResult };
 })();
 
 // Manage flow of game: mediator between all other modules/functions
@@ -65,15 +81,18 @@ const gameController = (() => {
   const playRound = (index) => {
     gameBoard.setIndex(index, getCurrentPlayerMarker());
     if (checkWinner(index)) {
+      displayController.setResult(getCurrentPlayerMarker());
       isOver = true;
       console.log("We have a winner!");
       return;
     }
     if (round === 9) {
+      displayController.setResult("Tie");
       isOver = true;
       console.log("It's a tie!");
     }
     round++;
+    displayController.setMessage(`It's ${getCurrentPlayerMarker()}'s turn`);
   };
 
   const getCurrentPlayerMarker = () => {
