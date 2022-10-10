@@ -62,7 +62,7 @@ const displayController = (() => {
 
   const setResult = (winner) => {
     if (winner === "Tie") {
-      setMessage(`It's a tie!`);
+      setMessage("It's a tie!");
     } else {
       setMessage(`Player ${winner} wins!`);
     }
@@ -90,6 +90,7 @@ const gameController = (() => {
       displayController.setResult("Tie");
       isOver = true;
       console.log("It's a tie!");
+      return;
     }
     round++;
     displayController.setMessage(`It's ${getCurrentPlayerMarker()}'s turn`);
