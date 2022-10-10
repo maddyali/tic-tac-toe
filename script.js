@@ -91,7 +91,7 @@ const gameController = (() => {
       return;
     }
     round++;
-    displayController.setMessage(`It's ${getCurrentPlayerMarker()}'s turn`);
+    displayController.setMessage(`Player ${getCurrentPlayerMarker()}'s turn`);
   };
 
   const getCurrentPlayerMarker = () => {
