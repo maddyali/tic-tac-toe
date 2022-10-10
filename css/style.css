@@ -1,0 +1,93 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+:root {
+  --clr-primary: #ffd439;
+  --clr-secondary: #faa405;
+  --clr-title: #f72215;
+  --clr-btn: #1cb0d4;
+  --ff-primary: "Robot", sans-serif;
+  --ff-accent: "Bungee Shade", cursive;
+}
+html {
+  height: 100vh;
+}
+body {
+  height: 100%;
+  color: black;
+  background-color: var(--clr-primary);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-family: var(--ff-primary);
+  line-height: 1;
+}
+main {
+  flex: 1;
+}
+h1 {
+  color: var(--clr-title);
+  font-family: var(--ff-accent);
+  font-size: 40px;
+  margin: 25px 0;
+  letter-spacing: 2px;
+}
+#message {
+  margin: 50px 0;
+}
+
+#gameboard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 350px;
+  margin: 0px auto;
+}
+
+.field {
+  height: 117px;
+  width: 117px;
+  border: 1px solid black;
+  background-color: var(--clr-secondary);
+  padding: 50px 0;
+  font-size: 50px;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 600px) {
+  #gameboard {
+    width: 450px;
+  }
+  .field {
+    height: 150px;
+    width: 150px;
+  }
+}
+
+button {
+  height: 50px;
+  background-color: var(--clr-btn);
+  padding: 5px 45px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid black;
+  cursor: pointer;
+  margin-top: 50px;
+}
+
+p {
+  font-size: 18px;
+  margin: 25px;
+}
+p a {
+  text-decoration: none;
+  color: black;
+}
+
+.fa-github {
+  font-size: 20px;
+  color: black;
+}
