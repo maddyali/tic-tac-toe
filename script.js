@@ -83,13 +83,11 @@ const gameController = (() => {
     if (checkWinner(index)) {
       displayController.setResult(getCurrentPlayerMarker());
       isOver = true;
-      console.log("We have a winner!");
       return;
     }
     if (round === 9) {
       displayController.setResult("Tie");
       isOver = true;
-      console.log("It's a tie!");
       return;
     }
     round++;
