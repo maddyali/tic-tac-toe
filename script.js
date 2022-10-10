@@ -56,6 +56,10 @@ const gameController = (() => {
       console.log("We have a winner!");
       return;
     }
+    if (round === 9) {
+      isOver = true;
+      console.log("It's a tie!");
+    }
     round++;
   };
 
