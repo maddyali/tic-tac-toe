@@ -19,12 +19,19 @@ const gameBoard = (() => {
     return array[index];
   };
 
-  return { setIndex, getIndex };
+  const reset = () => {
+    for (let i = 0; i < array.length; i++) {
+      array[i] = "";
+    }
+  };
+
+  return { setIndex, getIndex, reset };
 })();
 
 // Manage view of game: interact with DOM & collect info to create players
 const displayController = (() => {
   const fieldElements = document.querySelectorAll(".field");
+  const restartBtn = document.querySelector("#restartBtn");
 
   fieldElements.forEach((field) => {
     field.addEventListener("click", (e) => {
@@ -32,6 +39,12 @@ const displayController = (() => {
       gameController.playRound(parseInt(e.target.dataset.index));
       updateGameboard();
     });
+  });
+
+  restartBtn.addEventListener("click", (e) => {
+    gameBoard.reset();
+    gameController.reset();
+    updateGameboard();
   });
 
   // Render contents of the gameboard array to the webpage.
@@ -99,5 +112,10 @@ const gameController = (() => {
     return isOver;
   };
 
-  return { playRound, gameOver };
+  const reset = () => {
+    let round = 1;
+    let isOver = false;
+  };
+
+  return { playRound, gameOver, reset };
 })();
